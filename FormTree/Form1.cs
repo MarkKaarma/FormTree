@@ -26,6 +26,13 @@ namespace FormTree
             tree.AfterSelect += Tree_AfterSelect;
             TreeNode tn = new TreeNode("Elementid");
             tn.Nodes.Add(new TreeNode("Nupp-Button"));
+            //Nupp
+            btn = new Button();
+            btn.Text = "Vajuta siia";
+            btn.Location = new Point(200, 300);
+            btn.Height = 100;
+            btn.Width = 200;
+            btn.Click += Btn_Click;
             tn.Nodes.Add(new TreeNode("Silt-Label"));
             tn.Nodes.Add(new TreeNode("Märkeruut-CheckBox"));
 
@@ -37,12 +44,6 @@ namespace FormTree
         {
             if (e.Node.Text == "Nupp-Button")
             {
-                btn = new Button();
-                btn.Text = "Vajuta siia";
-                btn.Location = new Point(200, 300);
-                btn.Height = 100;
-                btn.Width = 200;
-                btn.Click += Btn_Click;
                 this.Controls.Add(btn);
             }
             else if (e.Node.Text == "Silt-Label")
@@ -60,7 +61,7 @@ namespace FormTree
                 box_btn.Location = new Point(200, 30);
                 this.Controls.Add(box_btn);
                 box_lbl = new CheckBox();
-                box_lbl.Text = "Näita nuppi";
+                box_lbl.Text = "Näita silt";
                 box_lbl.Location = new Point(200, 90);
                 this.Controls.Add(box_lbl);
                 box_btn.CheckedChanged += Box_btn_CheckedChanged;
@@ -69,7 +70,7 @@ namespace FormTree
 
         private void Box_btn_CheckedChanged(object sender, EventArgs e)
         {
-            
+           
         }
 
         public void Btn_Click(object sender, EventArgs e)
