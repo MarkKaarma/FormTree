@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -33,6 +34,7 @@ namespace FormTree
             tn.Nodes.Add(new TreeNode("Märkeruut-CheckBox"));
             tn.Nodes.Add(new TreeNode("Pildikast-PictureBox"));
             tn.Nodes.Add(new TreeNode("Kaart-TabControl"));
+            tn.Nodes.Add(new TreeNode("Sõnumikast-MessageBox"));
             //Nupp
             btn = new Button();
             btn.Text = "Vajuta siia";
@@ -91,12 +93,43 @@ namespace FormTree
                 tabControl.Size = new Size(200, 100);
                 TabPage page1, page2, page3;
                 page1 = new TabPage("First");
+                page1.BackColor = Color.Green;
                 page2 = new TabPage("Second");
+                page2.BackColor = Color.Black;
                 page3 = new TabPage("Third");
+                page3.BackColor = Color.Red;
+
                 tabControl.Controls.Add(page1);
                 tabControl.Controls.Add(page2);
                 tabControl.Controls.Add(page3);
+                tabControl.SelectedIndex = 2;
+                
+
                 this.Controls.Add(tabControl);
+            }
+            else if(e.Node.Text=="Sõnumikast-MessageBox")
+            {
+                MessageBox.Show("MessageBox", "Kõige lihtsam aken");
+                var aswer=MessageBox.Show("Tahad InPutBoxi näha?", "Aken koos nupudepa", MessageBoxButtons.YesNoCancel);
+                if (aswer == DialogResult.Yes)
+                {
+                    string text=Interaction.InputBox("Sisse siia mingi teksti", "InputBox", "Mingi tekst");
+                    if (MessageBox.Show("Kas te tahate salvesta Label-is?","Teksti salvesta", MessageBoxButtons.OKCancel)==DialogResult.OK)
+                    {
+                        lbl.Text = text;
+                        Controls.Add(lbl);
+                    }
+                }
+                else if (aswer==DialogResult.No)
+                {
+                    var aswer1=MessageBox.Show("Mis värvi soovite: 0 - roheline, 1 - must, 2 - punane? ", "Aken");
+                    string text1 = Interaction.InputBox("Sisse siia mingi teksti", "InputBox", "0");
+                    if (aswer1 == DialogResult.OK)
+                    {
+                         
+                    }
+                }
+
             }
         }
 
